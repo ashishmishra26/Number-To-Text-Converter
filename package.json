@@ -1,0 +1,42 @@
+{
+  "name": "converter",
+  "version": "0.0.1",
+  "description": "Number-To-Text-Converter",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel --presets es2015 src/*js -o build/bundle.js",
+    "start": "./node_modules/.bin/babel-node ./src/app.js",
+    "build": "webpack --display-error-details",
+    "webpack": "webpack ./src/*.js bundle.js", 
+    "test": "karma start karma.conf.js"
+  },
+  "repository": "https://github.com/ashishmishra26/Number-To-Text-Converter.git",
+  "author": "Ashish Mishra <b.s.ashish26@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.0",
+    "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^10.2.1",
+    "jasmine": "^2.7.0",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.4",
+    "webpack": "^3.5.2"
+  }
+}
