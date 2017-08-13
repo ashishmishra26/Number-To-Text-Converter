@@ -29,9 +29,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
    
     preprocessors: {
-      '**/src/*.js':  ["babel"],
-      '**/test/*.js': ["babel"],
-      '**/build/bundle.js': 'coverage',
+      '**/src/numberword.js': 'coverage',
     },
 
     coverageReporter: {
