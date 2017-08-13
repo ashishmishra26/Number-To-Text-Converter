@@ -2,7 +2,7 @@
   "name": "converter",
   "version": "0.0.1",
   "description": "Number-To-Text-Converter",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "babel": "babel --presets es2015 src/*js -o build/bundle.js",
     "start": "./node_modules/.bin/babel-node ./src/app.js",
