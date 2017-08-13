@@ -9,7 +9,6 @@ export class Time {
         this.change = "false";
     }
     convert() {
-        //console.log(this.time);
         let a = [];
         a = this.time.split(":");
         let obj = new num.NumberToWord();
@@ -25,9 +24,9 @@ export class Time {
         a = this.time.split(":");
         let obj = new num.NumberToWord();
         let h1 = obj.number_to_word(a[0]);
-        h1=h1.trim();
+        h1 = h1.trim();
         let h2 = obj.number_to_word(a[1]);
-        h2=h2.trim();
+        h2 = h2.trim();
         let word = h1 + " " + h2;
         return word;
     }

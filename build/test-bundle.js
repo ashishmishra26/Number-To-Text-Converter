@@ -212,18 +212,15 @@ var Decider = exports.Decider = function () {
     }
 
     _createClass(Decider, [{
-        key: 'decide',
+        key: "decide",
         value: function decide(ref, input) {
             if (input.match(/^\d+$/)) {
-                console.log(input, "cardinal");
                 var obj = new car.Cardinal(ref, input);
                 obj.convert();
-            } else if (input.match(/\d+[.]\d+$|\d+[\/]\d+$|[+]\d{12}$|[0]\d{12}$|\d{1,2}[:][0-5][0-9]$|\d{1,4}[-]\d{1,2}[-]\d{1,4}$|\d{1,4}[\/]\d{1,2}[\/]\d{1,4}$|^\$?\d+(,\d{1,})*(\.\d*)?$/)) {
-                console.log(input, "middle");
+            } else if (input.match(/\d+[.]\d+$|\d+[/]\d+$|[+]\d{12}$|[0]\d{12}$|\d{1,2}[:][0-5][0-9]$|\d{1,4}[-]\d{1,2}[-]\d{1,4}$|\d{1,4}[/]\d{1,2}[/]\d{1,4}$|^\$?\d+(,\d{1,})*(\.\d*)?$/)) {
                 var obj2 = new _specialmiddle.SpecialMiddle(ref, input);
                 obj2.transfer();
             } else {
-                console.log(input, "suffix");
                 var obj3 = new suf.SuffixPrefix(ref, input);
                 obj3.check();
             }
@@ -512,19 +509,18 @@ var SpecialMiddle = exports.SpecialMiddle = function () {
     }
 
     _createClass(SpecialMiddle, [{
-        key: 'transfer',
+        key: "transfer",
         value: function transfer() {
             if (this.middle.match(/\d{1,2}[:][0-5][0-9]/g)) {
                 var obj = new time.Time(this.ref, this.middle);
                 obj.convert();
-            } else if (this.middle.match(/\d+[.]\d+|\d+[\/]\d+/g)) {
+            } else if (this.middle.match(/\d+[.]\d+|\d+[/]\d+/g)) {
                 var obj2 = new dec.DecimalFraction(this.ref, this.middle);
                 obj2.convert();
             } else if (this.middle.match(/[+]\d{12}|[0]\d{12}/g)) {
                 var obj3 = new phone.Phoneno(this.ref, this.middle);
                 obj3.convert();
-            } else if (this.middle.match(/\d{1,4}[-]\d{1,2}[-]\d{1,4}|\d{1,4}[\/]\d{1,2}[\/]\d{1,4}/g)) {
-                console.log(this.middle, "date");
+            } else if (this.middle.match(/\d{1,4}[-]\d{1,2}[-]\d{1,4}|\d{1,4}[/]\d{1,2}[/]\d{1,4}/g)) {
                 var obj4 = new date.Date(this.ref, this.middle);
                 obj4.convert();
             } else if (this.middle.match(/^\$?\d+(,\d{1,})*(\.\d*)?$/)) {
@@ -573,7 +569,6 @@ var Time = exports.Time = function () {
     _createClass(Time, [{
         key: "convert",
         value: function convert() {
-            //console.log(this.time);
             var a = [];
             a = this.time.split(":");
             var obj = new num.NumberToWord();
@@ -631,7 +626,7 @@ var DecimalFraction = exports.DecimalFraction = function () {
     }
 
     _createClass(DecimalFraction, [{
-        key: 'convert',
+        key: "convert",
         value: function convert() {
             var obj = new _numberword.NumberToWord(this.ref);
             var text = this.df;
@@ -642,22 +637,22 @@ var DecimalFraction = exports.DecimalFraction = function () {
                 b.push(".");
                 b.push(obj.number_to_word(arr[1]));
                 b = b.join(" ");
-                b = b.replace(/\s+/g, ' ');
+                b = b.replace(/\s+/g, "");
                 var obj2 = new _replace.Replace(this.ref);
                 obj2.replacer(this.df, b);
-            } else if (text.match(/\d+[\/]\d+/g)) {
+            } else if (text.match(/\d+[/]\d+/g)) {
                 var _arr = text.split("/");
                 b.push(obj.number_to_word(_arr[0]));
                 b.push("/");
                 b.push(obj.number_to_word(_arr[1]));
                 b = b.join(" ");
-                b = b.replace(/\s+/g, ' ');
+                b = b.replace(/\s+/g, "");
                 var _obj = new _replace.Replace(this.ref);
                 _obj.replacer(this.df, b);
             }
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var obj = new _numberword.NumberToWord(this.ref);
             var text = this.df;
@@ -668,15 +663,15 @@ var DecimalFraction = exports.DecimalFraction = function () {
                 b.push(".");
                 b.push(obj.number_to_word(arr[1]));
                 b = b.join(" ");
-                b = b.replace(/\s+/g, ' ');
+                b = b.replace(/\s+/g, "");
                 return b;
-            } else if (text.match(/\d+[\/]\d+/g)) {
+            } else if (text.match(/\d+[/]\d+/g)) {
                 var _arr2 = text.split("/");
                 b.push(obj.number_to_word(_arr2[0]));
                 b.push("/");
                 b.push(obj.number_to_word(_arr2[1]));
                 b = b.join(" ");
-                b = b.replace(/\s+/g, ' ');
+                b = b.replace(/\s+/g, "");
                 return b;
             }
         }
@@ -714,34 +709,32 @@ var Phoneno = exports.Phoneno = function () {
     }
 
     _createClass(Phoneno, [{
-        key: 'convert',
+        key: "convert",
         value: function convert() {
             var obj = new _numberword.NumberToWord();
             var out = "";
-            console.log(this.no);
             out = this.no.charAt(0);
             for (var i = 1; i < this.no.length; i++) {
                 var lett = this.no.charAt(i);
                 out += obj.number_to_word(lett);
             }
             out = out.trim();
-            out = out.replace(/\s+/g, ' ');
+            out = out.replace(/\s+/g, "");
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.no, out);
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var obj = new _numberword.NumberToWord();
             var out = "";
-            console.log(this.no);
             out = this.no.charAt(0);
             for (var i = 1; i < this.no.length; i++) {
                 var lett = this.no.charAt(i);
                 out += obj.number_to_word(lett);
             }
             out = out.trim();
-            out = out.replace(/\s+/g, ' ');
+            out = out.replace(/\s+/g, "");
             return out;
         }
     }]);
@@ -840,10 +833,9 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
     }
 
     _createClass(SuffixPrefix, [{
-        key: 'check',
+        key: "check",
         value: function check() {
             if (this.mix.match(/\d+st|\d+nd|\d+rd|\d+th/g)) {
-                console.log(ordinal);
                 var obj = new ordinal.Ordinal(this.ref, this.mix);
                 obj.convert();
             } else {
@@ -859,7 +851,7 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
                     var str = _obj.number_to_word(a[k]);
                     s = s.replace(a[k], str);
                 }
-                s = s.replace(/\s+/g, '');
+                s = s.replace(/\s+/g, "");
                 s = s.replace("onest", "first");
                 s = s.replace("twond", "second");
                 s = s.replace("threerd", "third");
@@ -871,7 +863,7 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
             }
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var s = this.mix;
             var r = /\d+/g;
@@ -885,7 +877,7 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
                 var str = obj.number_to_word(a[k]);
                 s = s.replace(a[k], str);
             }
-            s = s.replace(/\s+/g, '');
+            s = s.replace(/\s+/g, "");
             s = s.replace("onest", "first");
             s = s.replace("twond", "second");
             s = s.replace("threerd", "third");
@@ -907,7 +899,7 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Ordinal = undefined;
 
@@ -920,65 +912,65 @@ var _numberword = __webpack_require__(0);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Ordinal = exports.Ordinal = function () {
-  function Ordinal(array, input) {
-    _classCallCheck(this, Ordinal);
+    function Ordinal(array, input) {
+        _classCallCheck(this, Ordinal);
 
-    this.number = input;
-    this.ref = array;
-  }
-
-  _createClass(Ordinal, [{
-    key: 'convert',
-    value: function convert() {
-      var s = this.number;
-      var r = /\d+/g;
-      var m = void 0;
-      var a = [];
-      while ((m = r.exec(s)) != null) {
-        a.push(m[0]);
-      }
-      var obj = new _numberword.NumberToWord();
-      for (var k = 0; k < a.length; k++) {
-        var str = obj.number_to_word(a[k]);
-        s = s.replace(a[k], str);
-      }
-      s = s.replace(/\s+/g, '');
-      s = s.replace("one st", "first");
-      s = s.replace("two nd", "second");
-      s = s.replace("three rd", "third");
-      s = s.replace("five th", "fifth");
-      s = s.replace("nine th", "ninth");
-      s = s.trim();
-      var obj2 = new _replace.Replace(this.ref);
-      obj2.replacer(this.number, s);
+        this.number = input;
+        this.ref = array;
     }
-  }, {
-    key: 'output',
-    value: function output() {
-      var s = this.number;
-      var r = /\d+/g;
-      var m = void 0;
-      var a = [];
-      while ((m = r.exec(s)) != null) {
-        a.push(m[0]);
-      }
-      var obj = new _numberword.NumberToWord();
-      for (var k = 0; k < a.length; k++) {
-        var str = obj.number_to_word(a[k]);
-        s = s.replace(a[k], str);
-      }
-      s = s.replace(/\s+/g, '');
-      s = s.replace("one st", "first");
-      s = s.replace("two nd", "second");
-      s = s.replace("three rd", "third");
-      s = s.replace("five th", "fifth");
-      s = s.replace("nine th", "ninth");
-      s = s.trim();
-      return s;
-    }
-  }]);
 
-  return Ordinal;
+    _createClass(Ordinal, [{
+        key: "convert",
+        value: function convert() {
+            var s = this.number;
+            var r = /\d+/g;
+            var m = void 0;
+            var a = [];
+            while ((m = r.exec(s)) != null) {
+                a.push(m[0]);
+            }
+            var obj = new _numberword.NumberToWord();
+            for (var k = 0; k < a.length; k++) {
+                var str = obj.number_to_word(a[k]);
+                s = s.replace(a[k], str);
+            }
+            s = s.replace(/\s+/g, "");
+            s = s.replace("one st", "first");
+            s = s.replace("two nd", "second");
+            s = s.replace("three rd", "third");
+            s = s.replace("five th", "fifth");
+            s = s.replace("nine th", "ninth");
+            s = s.trim();
+            var obj2 = new _replace.Replace(this.ref);
+            obj2.replacer(this.number, s);
+        }
+    }, {
+        key: "output",
+        value: function output() {
+            var s = this.number;
+            var r = /\d+/g;
+            var m = void 0;
+            var a = [];
+            while ((m = r.exec(s)) != null) {
+                a.push(m[0]);
+            }
+            var obj = new _numberword.NumberToWord();
+            for (var k = 0; k < a.length; k++) {
+                var str = obj.number_to_word(a[k]);
+                s = s.replace(a[k], str);
+            }
+            s = s.replace(/\s+/g, "");
+            s = s.replace("one st", "first");
+            s = s.replace("two nd", "second");
+            s = s.replace("three rd", "third");
+            s = s.replace("five th", "fifth");
+            s = s.replace("nine th", "ninth");
+            s = s.trim();
+            return s;
+        }
+    }]);
+
+    return Ordinal;
 }();
 
 /***/ })
