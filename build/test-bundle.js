@@ -78,7 +78,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**Module to convert Number into word format.
+ *  @module
+ */
 var NumberToWord = exports.NumberToWord = function () {
+    /**Constructor of NumberToWord class
+     * @constructor
+     */
     function NumberToWord() {
         _classCallCheck(this, NumberToWord);
 
@@ -87,6 +93,11 @@ var NumberToWord = exports.NumberToWord = function () {
         this.tens = ["", "", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninty"];
         this.beyond = [" ", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion", "tredecillion", "quattuordecillion"];
     }
+    /**Thid is convert function 
+     * @function
+     * @param {number} [times=3]  
+     */
+
 
     _createClass(NumberToWord, [{
         key: "convert",
@@ -105,6 +116,12 @@ var NumberToWord = exports.NumberToWord = function () {
             }
             return string;
         }
+        /**Thid is convert function 
+         * @function
+         * @param {number}  input provided by different modules.
+         * @return {string} -converted number in string.  
+         */
+
     }, {
         key: "number_to_word",
         value: function number_to_word(number) {
@@ -150,32 +167,47 @@ var NumberToWord = exports.NumberToWord = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**Replace Module
+ * @module
+ */
+/**Replace class
+ * @class
+ */
 var Replace = exports.Replace = function () {
-    function Replace(array) {
-        _classCallCheck(this, Replace);
+  /**constructor of replace class
+   * @constructor
+   * @param {object} -reference of identifier class
+  */
+  function Replace(array) {
+    _classCallCheck(this, Replace);
 
-        this.ref = array;
+    this.ref = array;
+  }
+  /**this is replacer function
+   * @function
+   * @param {string|string} - original value and changed value to replace.
+   */
+
+
+  _createClass(Replace, [{
+    key: "replacer",
+    value: function replacer(token, word) {
+      this.ref.text = this.ref.text.replace(token, word);
+      this.ref.count++;
+      if (this.ref.a.length === this.ref.count) {
+        document.getElementById("result").innerHTML = this.ref.text;
+      }
     }
+  }]);
 
-    _createClass(Replace, [{
-        key: "replacer",
-        value: function replacer(token, word) {
-            this.ref.text = this.ref.text.replace(token, word);
-            this.ref.count++;
-            if (this.ref.a.length === this.ref.count) {
-                document.getElementById("result").innerHTML = this.ref.text;
-            }
-        }
-    }]);
-
-    return Replace;
+  return Replace;
 }();
 
 /***/ }),
@@ -190,7 +222,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Decider = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /** Decider Module */
+
 
 var _cardinal = __webpack_require__(3);
 
@@ -206,6 +239,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/** This is decider class 
+ * @class
+*/
 var Decider = exports.Decider = function () {
     function Decider() {
         _classCallCheck(this, Decider);
@@ -213,6 +249,11 @@ var Decider = exports.Decider = function () {
 
     _createClass(Decider, [{
         key: "decide",
+
+        /**decider function to decide the type of input
+         * @function
+         * @param {object|string} - reference of identifier class and input by identifier class.
+         */
         value: function decide(ref, input) {
             if (input.match(/^\d+$/)) {
                 var obj = new car.Cardinal(ref, input);
@@ -238,11 +279,12 @@ var Decider = exports.Decider = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Cardinal = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**This is Cardinal Module */
+
 
 var _numberword = __webpack_require__(0);
 
@@ -256,32 +298,49 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/** Cardinal class
+ * @class
+ * Used to convert simple cardinal numbers into words.
+ */
 var Cardinal = exports.Cardinal = function () {
-    function Cardinal(array, input) {
-        _classCallCheck(this, Cardinal);
+  /**constructor of cardinal
+   * @constructor
+   * @param {object|string} reference and input.
+   */
+  function Cardinal(array, input) {
+    _classCallCheck(this, Cardinal);
 
-        this.number = input;
-        this.ref = array;
+    this.number = input;
+    this.ref = array;
+  }
+  /**function to convert cardinal number to word 
+   * @function 
+  */
+
+
+  _createClass(Cardinal, [{
+    key: "convert",
+    value: function convert() {
+      var obj = new num.NumberToWord();
+      var r = obj.number_to_word(this.number);
+      var ob = new rep.Replace(this.ref);
+      ob.replacer(this.number, r);
     }
+    /**function output 
+     * @function
+     * @return string converted string.
+     */
 
-    _createClass(Cardinal, [{
-        key: "convert",
-        value: function convert() {
-            var obj = new num.NumberToWord();
-            var r = obj.number_to_word(this.number);
-            var ob = new rep.Replace(this.ref);
-            ob.replacer(this.number, r);
-        }
-    }, {
-        key: "output",
-        value: function output() {
-            var obj = new num.NumberToWord();
-            var r = obj.number_to_word(this.number);
-            return r.trim();
-        }
-    }]);
+  }, {
+    key: "output",
+    value: function output() {
+      var obj = new num.NumberToWord();
+      var r = obj.number_to_word(this.number);
+      return r.trim();
+    }
+  }]);
 
-    return Cardinal;
+  return Cardinal;
 }();
 
 /***/ }),
@@ -296,7 +355,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Date = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /** This is Date module */
+
 
 var _replace = __webpack_require__(1);
 
@@ -304,13 +364,24 @@ var _numberword = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/** This is Date class 
+ * @class 
+*/
 var Date = exports.Date = function () {
+    /**constructor of Date class 
+     * @constructor
+     * @param {object|string}
+    */
     function Date(array, input) {
         _classCallCheck(this, Date);
 
         this.date = input;
         this.ref = array;
     }
+    /**convert function to convert the date in word format
+     * @function 
+    */
+
 
     _createClass(Date, [{
         key: "convert",
@@ -325,6 +396,11 @@ var Date = exports.Date = function () {
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.date, b);
         }
+        /**output function to return the converted value
+         * @function
+         * @return {string} - converted value in string format. 
+        */
+
     }, {
         key: "output",
         value: function output() {
@@ -412,7 +488,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Identifier = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**This is Identifier module 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     */
+
 
 var _decider = __webpack_require__(2);
 
@@ -422,7 +501,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**Identifier class
+ * @class Identifier class.
+ */
 var Identifier = exports.Identifier = function () {
+    /**This is constructor 
+     * @constructor
+     * @param {string} input-input by user.  
+    */
     function Identifier(input) {
         _classCallCheck(this, Identifier);
 
@@ -430,6 +516,11 @@ var Identifier = exports.Identifier = function () {
         this.a = [];
         this.count = 0;
     }
+    /**This id identify function 
+     * @function
+     * used to identify tokens which contain numbers in it.
+    */
+
 
     _createClass(Identifier, [{
         key: "identify",
@@ -476,7 +567,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SpecialMiddle = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /** special middle module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
 
 var _time = __webpack_require__(8);
 
@@ -500,13 +594,24 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**Special Middle class
+ * @class
+ */
 var SpecialMiddle = exports.SpecialMiddle = function () {
+    /**constructor of Special middle class
+     * @constructor
+     * @param {object|string} 
+     */
     function SpecialMiddle(array, input) {
         _classCallCheck(this, SpecialMiddle);
 
         this.middle = input;
         this.ref = array;
     }
+    /**transfer function
+     * @function
+     */
+
 
     _createClass(SpecialMiddle, [{
         key: "transfer",
@@ -545,7 +650,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Time = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /** Time Module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
 
 var _replace = __webpack_require__(1);
 
@@ -557,7 +665,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**This is Time class
+ * @class
+ */
 var Time = exports.Time = function () {
+    /**constructor of Time class
+     * @constructor
+     * @param {object|string} 
+     */
     function Time(array, input) {
         _classCallCheck(this, Time);
 
@@ -565,6 +680,10 @@ var Time = exports.Time = function () {
         this.ref = array;
         this.change = "false";
     }
+    /** convert function
+     * @function
+     */
+
 
     _createClass(Time, [{
         key: "convert",
@@ -579,6 +698,11 @@ var Time = exports.Time = function () {
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.time, word);
         }
+        /** output function
+         * @function
+         * @return {string} -converted value of time in string format.
+         */
+
     }, {
         key: "output",
         value: function output() {
@@ -609,7 +733,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DecimalFraction = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**This is Decimal-Fraction module */
+
 
 var _replace = __webpack_require__(1);
 
@@ -617,13 +742,24 @@ var _numberword = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/** This is Decimal fraction class 
+ * @class
+*/
 var DecimalFraction = exports.DecimalFraction = function () {
+    /**constructor of DecimalFraction  
+     * @constructor
+     * @param {object|string}
+    */
     function DecimalFraction(array, input) {
         _classCallCheck(this, DecimalFraction);
 
         this.ref = array;
         this.df = input;
     }
+    /**convert function
+     * @function -to convert decimal and fraction respectively.
+     */
+
 
     _createClass(DecimalFraction, [{
         key: "convert",
@@ -651,6 +787,11 @@ var DecimalFraction = exports.DecimalFraction = function () {
                 _obj.replacer(this.df, b);
             }
         }
+        /** function to return output
+         * @function
+         * @return {string} -decimal/fraction in word format.
+         */
+
     }, {
         key: "output",
         value: function output() {
@@ -692,7 +833,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Phoneno = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /** This is Phoneno Module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
 
 var _numberword = __webpack_require__(0);
 
@@ -700,13 +844,24 @@ var _replace = __webpack_require__(1);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**Phoneno class
+ * @class
+ */
 var Phoneno = exports.Phoneno = function () {
+    /**constructor of Phone class
+     * @constructor
+     * @param {object|string}
+     */
     function Phoneno(array, input) {
         _classCallCheck(this, Phoneno);
 
         this.no = input;
         this.ref = array;
     }
+    /**convert function
+     * @function
+     */
+
 
     _createClass(Phoneno, [{
         key: "convert",
@@ -723,6 +878,11 @@ var Phoneno = exports.Phoneno = function () {
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.no, out);
         }
+        /**output function to return value
+         * @function
+         * @return {string}
+         */
+
     }, {
         key: "output",
         value: function output() {
@@ -734,7 +894,7 @@ var Phoneno = exports.Phoneno = function () {
                 out += obj.number_to_word(lett);
             }
             out = out.trim();
-            out = out.replace(/\s+/g, "");
+            out = out.replace(/\s+/g, " ");
             return out;
         }
     }]);
@@ -754,7 +914,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Money = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**This is Money module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     */
+
 
 var _replace = __webpack_require__(1);
 
@@ -762,13 +925,24 @@ var _numberword = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**This is Money class 
+ * @class
+*/
 var Money = exports.Money = function () {
+    /**constructor of Money class 
+     * @constructor 
+     * @param {object|string}
+    */
     function Money(array, input) {
         _classCallCheck(this, Money);
 
         this.ref = array;
         this.money = input;
     }
+    /**convert function 
+     * @function 
+    */
+
 
     _createClass(Money, [{
         key: "convert",
@@ -782,6 +956,11 @@ var Money = exports.Money = function () {
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.money, change);
         }
+        /**output function to return value
+         * @function
+         * @return {string} -converted value of money value. 
+        */
+
     }, {
         key: "output",
         value: function output() {
@@ -810,7 +989,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SuffixPrefix = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**This is Suffox Prefix module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
 
 var _ordinal = __webpack_require__(13);
 
@@ -824,13 +1006,24 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**SuffixPrefix class
+ * @class
+ */
 var SuffixPrefix = exports.SuffixPrefix = function () {
+    /**constructor of Suffix Prefix class
+     * @constructor
+     * @param {object|string}
+     */
     function SuffixPrefix(array, input) {
         _classCallCheck(this, SuffixPrefix);
 
         this.ref = array;
         this.mix = input;
     }
+    /**function check 
+     * @function
+    */
+
 
     _createClass(SuffixPrefix, [{
         key: "check",
@@ -862,6 +1055,11 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
                 obj2.replacer(this.mix, s);
             }
         }
+        /** output function
+         * @function
+         * @return {string}  -converted value.
+         */
+
     }, {
         key: "output",
         value: function output() {
@@ -903,7 +1101,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Ordinal = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**This is Ordinal Module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
 
 var _replace = __webpack_require__(1);
 
@@ -911,13 +1112,24 @@ var _numberword = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**Ordinal class
+ * @class 
+ */
 var Ordinal = exports.Ordinal = function () {
+    /** constructor of Ordinal class
+     * @constructor 
+     * @param {object|string}
+     */
     function Ordinal(array, input) {
         _classCallCheck(this, Ordinal);
 
         this.number = input;
         this.ref = array;
     }
+    /**convert function 
+     * @function 
+    */
+
 
     _createClass(Ordinal, [{
         key: "convert",
@@ -944,6 +1156,11 @@ var Ordinal = exports.Ordinal = function () {
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.number, s);
         }
+        /**output function 
+         * @function
+         * @return {string} -converted value of ordinal number in word form.
+        */
+
     }, {
         key: "output",
         value: function output() {

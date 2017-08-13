@@ -1,4 +1,6 @@
-/**This is Identifier module */
+/**This is Identifier module 
+ * @module
+*/
 import * as imp from "./decider.js";
 /**Identifier class
  * @class Identifier class.

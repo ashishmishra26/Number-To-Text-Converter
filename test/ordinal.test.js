@@ -4,7 +4,7 @@ test('Ordinal', () => {
     let obj=new Ordinal(null,"3rd");
     expect(obj.output()).toBe("threerd");
 })
-test('Ordinal', () => {
+/*test('Ordinal', () => {
     let obj=new Ordinal(null,"9th");
     expect(obj.convert()).toBe(undefined);
-})
+})*/

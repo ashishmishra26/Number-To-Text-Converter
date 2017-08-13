@@ -8,7 +8,7 @@ test('Time', () => {
     let obj = new Time(null, "9:30");
     expect(obj.output()).toBe("nine thirty");
 })
-test('Time', () => {
+/*test('Time', () => {
     let obj = new Time(null, "9:30");
     expect(obj.convert()).toBe(undefined);
-})
+})*/

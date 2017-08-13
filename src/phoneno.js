@@ -48,7 +48,7 @@ export class Phoneno {
             out += (obj.number_to_word(lett));
         }
         out = out.trim();
-        out = out.replace(/\s+/g, "");
+        out = out.replace(/\s+/g, " ");
         return out;
     }
 
