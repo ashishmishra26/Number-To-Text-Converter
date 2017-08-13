@@ -1,7 +1,7 @@
 import {
     Replace
-} from './replace.js';
-import * as num from './numberword.js';
+} from "./replace.js";
+import * as num from "./numberword.js";
 export class Time {
     constructor(array, input) {
         this.time = input;
@@ -9,7 +9,7 @@ export class Time {
         this.change = "false";
     }
     convert() {
-        console.log(this.time);
+        //console.log(this.time);
         let a = [];
         a = this.time.split(":");
         let obj = new num.NumberToWord();
@@ -29,7 +29,6 @@ export class Time {
         let h2 = obj.number_to_word(a[1]);
         h2=h2.trim();
         let word = h1 + " " + h2;
-        
         return word;
     }
 }

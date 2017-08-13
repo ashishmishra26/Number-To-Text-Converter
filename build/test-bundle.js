@@ -268,7 +268,7 @@ var Cardinal = exports.Cardinal = function () {
     }
 
     _createClass(Cardinal, [{
-        key: 'convert',
+        key: "convert",
         value: function convert() {
             var obj = new num.NumberToWord();
             var r = obj.number_to_word(this.number);
@@ -276,7 +276,7 @@ var Cardinal = exports.Cardinal = function () {
             ob.replacer(this.number, r);
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var obj = new num.NumberToWord();
             var r = obj.number_to_word(this.number);
@@ -316,7 +316,7 @@ var Date = exports.Date = function () {
     }
 
     _createClass(Date, [{
-        key: 'convert',
+        key: "convert",
         value: function convert() {
             var a = this.date.split(/[-]|[/]/);
             var b = [];
@@ -329,7 +329,7 @@ var Date = exports.Date = function () {
             obj2.replacer(this.date, b);
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var a = this.date.split(/[-]|[/]/);
             var b = [];
@@ -440,15 +440,12 @@ var Identifier = exports.Identifier = function () {
             var _this = this;
 
             var string = this.text.split(" ");
-            console.log(string);
             for (var i = 0; i < string.length; i++) {
                 var reg = /\d+/g;
-                var m = void 0;
-                if ((m = reg.exec(string[i])) !== null) {
+                if (reg.exec(string[i]) !== null) {
                     this.a.push(string[i]);
                 }
             }
-            console.log(this.a);
             if (this.a.length !== 0) {
                 var _loop = function _loop(j) {
                     var that = _this;
@@ -464,11 +461,6 @@ var Identifier = exports.Identifier = function () {
             } else {
                 document.getElementById("result").innerHTML = this.text;
             }
-        }
-    }, {
-        key: "print",
-        value: function print() {
-            console.log(this.text, "returned");
         }
     }]);
 
@@ -579,9 +571,9 @@ var Time = exports.Time = function () {
     }
 
     _createClass(Time, [{
-        key: 'convert',
+        key: "convert",
         value: function convert() {
-            console.log(this.time);
+            //console.log(this.time);
             var a = [];
             a = this.time.split(":");
             var obj = new num.NumberToWord();
@@ -593,7 +585,7 @@ var Time = exports.Time = function () {
             obj2.replacer(this.time, word);
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var a = [];
             a = this.time.split(":");
@@ -603,7 +595,6 @@ var Time = exports.Time = function () {
             var h2 = obj.number_to_word(a[1]);
             h2 = h2.trim();
             var word = h1 + " " + h2;
-
             return word;
         }
     }]);
@@ -787,24 +778,24 @@ var Money = exports.Money = function () {
     }
 
     _createClass(Money, [{
-        key: 'convert',
+        key: "convert",
         value: function convert() {
             var money = this.money;
             var arr = money.split(",");
             var curr = arr.join(" ");
-            curr = curr.replace(/\s+/g, '');
+            curr = curr.replace(/\s+/g, "");
             var obj = new _numberword.NumberToWord();
             var change = obj.number_to_word(curr);
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.money, change);
         }
     }, {
-        key: 'output',
+        key: "output",
         value: function output() {
             var money = this.money;
             var arr = money.split(",");
             var curr = arr.join(" ");
-            curr = curr.replace(/\s+/g, '');
+            curr = curr.replace(/\s+/g, "");
             var obj = new _numberword.NumberToWord();
             var change = obj.number_to_word(curr);
             return change;

@@ -1,5 +1,5 @@
-import * as num from './numberword.js';
-import * as rep from './replace.js';
+import * as num from "./numberword.js";
+import * as rep from "./replace.js";
 export class Cardinal {
     constructor(array, input) {
         this.number = input;
@@ -13,7 +13,7 @@ export class Cardinal {
     }
     output() {
         let obj = new num.NumberToWord();
-        let r = obj.number_to_word(this.number)
+        let r = obj.number_to_word(this.number);
         return r.trim();
     }
 }

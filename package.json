@@ -7,7 +7,7 @@
     "babel": "babel --presets es2015 src/*js -o build/bundle.js",
     "start": "./node_modules/.bin/babel-node ./src/app.js",
     "build": "webpack --display-error-details",
-    "webpack": "webpack ./src/*.js bundle.js", 
+    "webpack": "webpack ./src/*.js bundle.js",
     "test": "jest --coverage"
   },
   "repository": "https://github.com/ashishmishra26/Number-To-Text-Converter.git",
@@ -30,6 +30,7 @@
     "eslint-config-standard": "^10.2.1",
     "jasmine": "^2.7.0",
     "jasmine-core": "^2.7.0",
+    "jshint": "^2.9.5",
     "karma": "^1.7.0",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chrome-launcher": "^2.2.0",

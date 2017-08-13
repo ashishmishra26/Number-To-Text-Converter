@@ -1,9 +1,9 @@
 import {
     Replace
-} from './replace.js';
+} from "./replace.js";
 import {
     NumberToWord
-} from './numberword.js';
+} from "./numberword.js";
 export class Date {
     constructor(array, input) {
         this.date = input;
