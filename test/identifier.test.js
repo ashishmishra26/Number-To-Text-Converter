@@ -1,9 +1,9 @@
 import {
     NumberToWord
-} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
+} from "../src/numberword.js";
 import {
     Identifier
-} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/identifier.js";
+} from "../src/identifier.js";
 
 test("Identifier", () => {
     let obj = new NumberToWord();

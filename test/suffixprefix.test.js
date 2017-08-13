@@ -1,9 +1,9 @@
 import {
     SuffixPrefix
-} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/suffixprefix.js";
+} from "../src/suffixprefix.js";
 import {
     NumberToWord
-} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
+} from "../src/numberword.js";
 test("SF", () => {
     let obj = new SuffixPrefix(null, "3s");
     expect(obj.output()).toBe("threes");

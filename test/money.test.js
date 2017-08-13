@@ -1,5 +1,5 @@
-import {Money} from '/home/ashishmishra/Desktop/Number-To-Text-Converter/src/money.js';
-import {NumberToWord} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
+import {Money} from '../src/money.js';
+import {NumberToWord} from "../src/numberword.js";
 test('Money', () => {
     let obj=new Money(null,"9,000");
     expect(obj.output()).toBe("nine  thousand ");
