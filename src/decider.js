@@ -1,13 +1,17 @@
+/** Decider Module */
 import * as car from "./cardinal.js";
 import {
     SpecialMiddle
 } from "./specialmiddle.js";
-
 import * as suf from "./suffixprefix.js";
+/** This is decider class 
+ * @class
+*/
 export class Decider {
-    constructor() {
-
-    }
+    /**decider function to decide the type of input
+     * @function
+     * @param {object|string} - reference of identifier class and input by identifier class.
+     */
     decide(ref, input) {
         if (input.match(/^\d+$/)) {
             let obj = new car.Cardinal(ref, input);

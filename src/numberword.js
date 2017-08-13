@@ -1,10 +1,20 @@
+/**Module to convert Number into word format.
+ *  @module
+ */
 export class NumberToWord {
+    /**Constructor of NumberToWord class
+     * @constructor
+     */
     constructor() {
         this.one = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
         this.digit = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
         this.tens = ["", "", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninty"];
         this.beyond = [" ", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion", "tredecillion", "quattuordecillion"];
     }
+    /**Thid is convert function 
+     * @function
+     * @param {number} [times=3]  
+     */
     convert(hplace, tplace, oplace) {
         let string = "";
         if (hplace > 0) {
@@ -20,13 +30,17 @@ export class NumberToWord {
         }
         return string;
     }
-
+    /**Thid is convert function 
+     * @function
+     * @param {number}  input provided by different modules.
+     * @return {string} -converted number in string.  
+     */
     number_to_word(number) {
         if (isNaN(number)) {
             return undefined;
         }
         if (number === "0") {
-            return "zero"+" ";
+            return "zero" + " ";
         }
         let temp = number,
             digit_array = [];

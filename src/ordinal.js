@@ -1,16 +1,27 @@
+/**This is Ordinal Module
+ * @module
+ */
 import {
     Replace
 } from "./replace.js";
 import {
     NumberToWord
 } from "./numberword.js";
-
-
+/**Ordinal class
+ * @class 
+ */
 export class Ordinal {
+    /** constructor of Ordinal class
+     * @constructor 
+     * @param {object|string}
+     */
     constructor(array, input) {
         this.number = input;
         this.ref = array;
     }
+    /**convert function 
+     * @function 
+    */
     convert() {
         let s = this.number;
         let r = /\d+/g;
@@ -35,6 +46,10 @@ export class Ordinal {
         obj2.replacer(this.number, s);
 
     }
+    /**output function 
+     * @function
+     * @return {string} -converted value of ordinal number in word form.
+    */
     output() {
         let s = this.number;
         let r = /\d+/g;

@@ -1,14 +1,27 @@
+/**This is Money module
+@module
+*/
 import {
     Replace
 } from "./replace.js";
 import {
     NumberToWord
 } from "./numberword.js";
+/**This is Money class 
+ * @class
+*/
 export class Money {
+    /**constructor of Money class 
+     * @constructor 
+     * @param {object|string}
+    */
     constructor(array, input) {
         this.ref = array;
         this.money = input;
     }
+    /**convert function 
+     * @function 
+    */
     convert() {
         let money = this.money;
         let arr = money.split(",");
@@ -19,6 +32,10 @@ export class Money {
         let obj2 = new Replace(this.ref);
         obj2.replacer(this.money, change);
     }
+    /**output function to return value
+     * @function
+     * @return {string} -converted value of money value. 
+    */
     output() {
         let money = this.money;
         let arr = money.split(",");

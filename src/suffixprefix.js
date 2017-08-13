@@ -1,3 +1,6 @@
+/**This is Suffox Prefix module
+ * @module
+ */
 import * as ordinal from "./ordinal.js";
 import {
     Replace
@@ -5,11 +8,21 @@ import {
 import {
     NumberToWord
 } from "./numberword.js";
+/**SuffixPrefix class
+ * @class
+ */
 export class SuffixPrefix {
+    /**constructor of Suffix Prefix class
+     * @constructor
+     * @param {object|string}
+     */
     constructor(array, input) {
         this.ref = array;
         this.mix = input;
     }
+    /**function check 
+     * @function
+    */
     check() {
         if (this.mix.match(/\d+st|\d+nd|\d+rd|\d+th/g)) {
             let obj = new ordinal.Ordinal(this.ref, this.mix);
@@ -38,6 +51,10 @@ export class SuffixPrefix {
             obj2.replacer(this.mix, s);
         }
     }
+    /** output function
+     * @function
+     * @return {string}  -converted value.
+     */
     output() {
         let s = this.mix;
         let r = /\d+/g;

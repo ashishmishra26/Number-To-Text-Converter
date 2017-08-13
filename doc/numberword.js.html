@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: numberword.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: numberword.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**Module to convert Number into word format.
+ *  @module
+ */
+export class NumberToWord {
+    /**Constructor of NumberToWord class
+     * @constructor
+     */
+    constructor() {
+        this.one = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+        this.digit = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+        this.tens = ["", "", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninty"];
+        this.beyond = [" ", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion", "tredecillion", "quattuordecillion"];
+    }
+    /**Thid is convert function 
+     * @function
+     * @param {number} [times=3]  
+     */
+    convert(hplace, tplace, oplace) {
+        let string = "";
+        if (hplace > 0) {
+            string += this.one[hplace] + " hundred ";
+        }
+        if (tplace === 1) {
+            string += this.digit[oplace] + " ";
+        } else if (tplace > 1) {
+            string += this.tens[tplace] + " ";
+            string += this.one[oplace] + " ";
+        } else {
+            string += this.one[oplace] + " ";
+        }
+        return string;
+    }
+    /**Thid is convert function 
+     * @function
+     * @param {number}  input provided by different modules.
+     * @return {string} -converted number in string.  
+     */
+    number_to_word(number) {
+        if (isNaN(number)) {
+            return undefined;
+        }
+        if (number === "0") {
+            return "zero" + " ";
+        }
+        let temp = number,
+            digit_array = [];
+        while (temp > 0) {
+            digit_array.push(temp % 10);
+            temp = temp / 10;
+            temp = Math.floor(temp);
+        }
+        if (digit_array.length % 3 !== 0)
+            digit_array.push(0);
+        if (digit_array.length % 3 !== 0)
+            digit_array.push(0);
+        let text = [],
+            position = 0;
+        for (let i = 2; i &lt; digit_array.length; i += 3, position++) {
+            let unit = this.convert(digit_array[i], digit_array[i - 1], digit_array[i - 2]);
+            if (unit.trim() !== "") {
+                text.push(unit + " " + this.beyond[position]);
+            }
+        }
+        let output = "";
+        for (let k = text.length - 1; k >= 0; k--) {
+            output += text[k] + " ";
+        }
+        return output;
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-money.html">money</a></li><li><a href="module-numberword.html">numberword</a></li><li><a href="module-ordinal.html">ordinal</a></li><li><a href="module-phoneno.html">phoneno</a></li><li><a href="module-replace.html">replace</a></li><li><a href="module-specialmiddle.html">specialmiddle</a></li><li><a href="module-suffixprefix.html">suffixprefix</a></li><li><a href="module-time.html">time</a></li></ul><h3>Classes</h3><ul><li><a href="Cardinal.html">Cardinal</a></li><li><a href="Date.html">Date</a></li><li><a href="Decider.html">Decider</a></li><li><a href="DecimalFraction.html">DecimalFraction</a></li><li><a href="Identifier.html">Identifier</a></li><li><a href="module-money.Money.html">Money</a></li><li><a href="module-numberword.NumberToWord.html">NumberToWord</a></li><li><a href="module-ordinal.Ordinal.html">Ordinal</a></li><li><a href="module-phoneno.Phoneno.html">Phoneno</a></li><li><a href="module-replace.Replace.html">Replace</a></li><li><a href="module-specialmiddle.SpecialMiddle.html">SpecialMiddle</a></li><li><a href="module-suffixprefix.SuffixPrefix.html">SuffixPrefix</a></li><li><a href="module-time.Time.html">Time</a></li></ul><h3>Global</h3><ul><li><a href="global.html#-toconvertdecimalandfractionrespectively.">-to convert decimal and fraction respectively.</a></li><li><a href="global.html#usedtoidentifytokenswhichcontainnumbersinit.">used to identify tokens which contain numbers in it.</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Sun Aug 13 2017 22:18:08 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

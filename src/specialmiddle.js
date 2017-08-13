@@ -1,3 +1,6 @@
+/** special middle module
+ * @module
+ */
 import * as time from "./time.js";
 import * as dec from "./decimal-fraction.js";
 import * as phone from "./phoneno.js";
@@ -5,11 +8,21 @@ import * as date from "./date.js";
 import {
     Money
 } from "./money.js";
+/**Special Middle class
+ * @class
+ */
 export class SpecialMiddle {
+/**constructor of Special middle class
+ * @constructor
+ * @param {object|string} 
+ */
     constructor(array, input) {
         this.middle = input;
         this.ref = array;
     }
+    /**transfer function
+     * @function
+     */
     transfer() {
         if (this.middle.match(/\d{1,2}[:][0-5][0-9]/g)) {
             let obj = new time.Time(this.ref, this.middle);

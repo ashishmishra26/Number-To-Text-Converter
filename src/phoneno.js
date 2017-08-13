@@ -1,14 +1,27 @@
+/** This is Phoneno Module
+ * @module
+ */
 import {
     NumberToWord
 } from "./numberword.js";
 import {
     Replace
 } from "./replace.js";
+/**Phoneno class
+ * @class
+ */
 export class Phoneno {
+    /**constructor of Phone class
+     * @constructor
+     * @param {object|string}
+     */
     constructor(array, input) {
         this.no = input;
         this.ref = array;
     }
+    /**convert function
+     * @function
+     */
     convert() {
         let obj = new NumberToWord();
         let out = "";
@@ -22,6 +35,10 @@ export class Phoneno {
         let obj2 = new Replace(this.ref);
         obj2.replacer(this.no, out);
     }
+    /**output function to return value
+     * @function
+     * @return {string}
+     */
     output() {
         let obj = new NumberToWord();
         let out = "";

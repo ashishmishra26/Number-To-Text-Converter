@@ -1,14 +1,25 @@
+/**This is Decimal-Fraction module */
 import {
     Replace
 } from "./replace.js";
 import {
     NumberToWord
 } from "./numberword.js";
+/** This is Decimal fraction class 
+ * @class
+*/
 export class DecimalFraction {
+    /**constructor of DecimalFraction  
+     * @constructor
+     * @param {object|string}
+    */
     constructor(array, input) {
         this.ref = array;
         this.df = input;
     }
+    /**convert function
+     * @function -to convert decimal and fraction respectively.
+     */
     convert() {
         let obj = new NumberToWord(this.ref);
         let text = this.df;
@@ -33,6 +44,10 @@ export class DecimalFraction {
             obj2.replacer(this.df,b);
         }
     }
+    /** function to return output
+     * @function
+     * @return {string} -decimal/fraction in word format.
+     */
     output(){
         let obj = new NumberToWord(this.ref);
         let text = this.df;

@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Sat Aug 12 2017 13:18:28 GMT+0530 (IST)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -12,7 +12,7 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-    plugins:[require("karma-webpack"), require('karma-jasmine'),require('karma-coverage'),require('karma-chrome-launcher'),require('karma-babel-preprocessor')],
+    plugins: [require("karma-webpack"), require('karma-jasmine'), require('karma-coverage'), require('karma-chrome-launcher'), require('karma-babel-preprocessor')],
     // list of files / patterns to load in the browser
     files: [
       "build/bundle.js",
@@ -21,25 +21,24 @@ module.exports = function(config) {
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-   
+
     preprocessors: {
       '**/src/numberword.js': 'coverage',
     },
 
     coverageReporter: {
-      dir :'coverage/'
+      dir: 'coverage/'
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress','coverage'],
+    reporters: ['progress', 'coverage'],
 
 
     // web server port

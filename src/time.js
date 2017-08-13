@@ -1,13 +1,26 @@
+/** Time Module
+ * @module
+ */
 import {
     Replace
 } from "./replace.js";
 import * as num from "./numberword.js";
+/**This is Time class
+ * @class
+ */
 export class Time {
+    /**constructor of Time class
+     * @constructor
+     * @param {object|string} 
+     */
     constructor(array, input) {
         this.time = input;
         this.ref = array;
         this.change = "false";
     }
+    /** convert function
+     * @function
+     */
     convert() {
         let a = [];
         a = this.time.split(":");
@@ -19,6 +32,10 @@ export class Time {
         let obj2 = new Replace(this.ref);
         obj2.replacer(this.time, word);
     }
+    /** output function
+     * @function
+     * @return {string} -converted value of time in string format.
+     */
     output() {
         let a = [];
         a = this.time.split(":");
