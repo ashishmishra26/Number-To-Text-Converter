@@ -1,1 +1,1 @@
-# Number-To-Text-Converter [![Travis](https://travis-ci.org/ashishmishra26/Number-To-Text-Converter.svg?branch=master)]()
+# Number-To-Text-Converter [![Travis]([![Build Status](https://travis-ci.org/ashishmishra26/Number-To-Text-Converter.svg?branch=master)](https://travis-ci.org/ashishmishra26/Number-To-Text-Converter))]()
