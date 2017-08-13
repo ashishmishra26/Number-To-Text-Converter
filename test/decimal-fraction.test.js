@@ -1,4 +1,5 @@
 import {DecimalFraction} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/decimal-fraction.js";
+import {NumberToWord} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
 test("DF", () => {
     let obj=new DecimalFraction(null,"3.3");
     expect(obj.output()).toBe("three . three ");

@@ -1,9 +1,14 @@
-import {Time} from '/home/ashishmishra/Desktop/Number-To-Text-Converter/src/time.js';
+import {
+    Time
+} from '/home/ashishmishra/Desktop/Number-To-Text-Converter/src/time.js';
+import {
+    NumberToWord
+} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
 test('Time', () => {
-    let obj=new Time(null,"9:30");
+    let obj = new Time(null, "9:30");
     expect(obj.output()).toBe("nine thirty");
 })
 test('Time', () => {
-    let obj=new Time(null,"9:30");
+    let obj = new Time(null, "9:30");
     expect(obj.convert()).toBe(undefined);
 })

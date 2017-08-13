@@ -1,4 +1,5 @@
 import {Date} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/date.js";
+import {NumberToWord} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
 test("Date", () => {
     let obj=new Date(null,"9-9-2009");
     expect(obj.output()).toBe("nine-nine-two  thousand nine");

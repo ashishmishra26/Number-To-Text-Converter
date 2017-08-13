@@ -1,13 +1,18 @@
-import {SuffixPrefix} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/suffixprefix.js";
+import {
+    SuffixPrefix
+} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/suffixprefix.js";
+import {
+    NumberToWord
+} from "/home/ashishmishra/Desktop/Number-To-Text-Converter/src/numberword.js";
 test("SF", () => {
-    let obj=new SuffixPrefix(null,"3s");
+    let obj = new SuffixPrefix(null, "3s");
     expect(obj.output()).toBe("threes");
 });
 test("SF", () => {
-    let obj=new SuffixPrefix(null,"4th");
+    let obj = new SuffixPrefix(null, "4th");
     expect(obj.check()).toBe(undefined);
 });
 test("SF", () => {
-    let obj=new SuffixPrefix(null,"4s");
+    let obj = new SuffixPrefix(null, "4s");
     expect(obj.check()).toBe(undefined);
 });
