@@ -30,7 +30,7 @@ export class SpecialMiddle {
         } else if (this.middle.match(/\d+[.]\d+|\d+[/]\d+/g)) {
             let obj2 = new dec.DecimalFraction(this.ref, this.middle);
             obj2.convert();
-        } else if (this.middle.match(/[+]\d{12}|[0]\d{12}/g)) {
+        } else if (this.middle.match(/[+]\d{12}|[0]\d{10}/g)) {
             let obj3 = new phone.Phoneno(this.ref, this.middle);
             obj3.convert();
         } else if (this.middle.match(/\d{1,4}[-]\d{1,2}[-]\d{1,4}|\d{1,4}[/]\d{1,2}[/]\d{1,4}/g)) {

@@ -114,6 +114,7 @@ var NumberToWord = exports.NumberToWord = function () {
             } else {
                 string += this.one[oplace] + " ";
             }
+            string.trim();
             return string;
         }
         /**Thid is convert function 
@@ -145,13 +146,14 @@ var NumberToWord = exports.NumberToWord = function () {
             for (var i = 2; i < digit_array.length; i += 3, position++) {
                 var unit = this.convert(digit_array[i], digit_array[i - 1], digit_array[i - 2]);
                 if (unit.trim() !== "") {
-                    text.push(unit + " " + this.beyond[position]);
+                    text.push(unit + this.beyond[position]);
                 }
             }
             var output = "";
             for (var k = text.length - 1; k >= 0; k--) {
                 output += text[k] + " ";
             }
+            output.trim();
             return output;
         }
     }]);
@@ -200,6 +202,8 @@ var Replace = exports.Replace = function () {
     key: "replacer",
     value: function replacer(token, word) {
       this.ref.text = this.ref.text.replace(token, word);
+      this.ref.text = this.ref.text.replace(/  +/g, " ");
+
       this.ref.count++;
       if (this.ref.a.length === this.ref.count) {
         document.getElementById("result").innerHTML = this.ref.text;
@@ -347,7 +351,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /** This is decider class 
  * @class
-*/
+ */
 var Decider = exports.Decider = function () {
     function Decider() {
         _classCallCheck(this, Decider);
@@ -361,12 +365,12 @@ var Decider = exports.Decider = function () {
          * @param {object|string} - reference of identifier class and input by identifier class.
          */
         value: function decide(ref, input) {
-            if (input.match(/^\d+$/)) {
-                var obj = new car.Cardinal(ref, input);
-                obj.convert();
-            } else if (input.match(/\d+[.]\d+$|\d+[/]\d+$|[+]\d{12}$|[0]\d{12}$|\d{1,2}[:][0-5][0-9]$|\d{1,4}[-]\d{1,2}[-]\d{1,4}$|\d{1,4}[/]\d{1,2}[/]\d{1,4}$|^\$?\d+(,\d{1,})*(\.\d*)?$/)) {
+            if (input.match(/\d+[.]\d+$|\d+[/]\d+$|[+]\d{12}$|[0]\d{10}$|\d{1,2}[:][0-5][0-9]$|\d{1,4}[-]\d{1,2}[-]\d{1,4}$|\d{1,4}[/]\d{1,2}[/]\d{1,4}$|^\$?\d+(,\d{1,})*(\.\d*)?$/)) {
                 var obj2 = new _specialmiddle.SpecialMiddle(ref, input);
                 obj2.transfer();
+            } else if (input.match(/^\d+$/)) {
+                var obj = new car.Cardinal(ref, input);
+                obj.convert();
             } else {
                 var obj3 = new suf.SuffixPrefix(ref, input);
                 obj3.check();
@@ -385,7 +389,7 @@ var Decider = exports.Decider = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Cardinal = undefined;
 
@@ -409,44 +413,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Used to convert simple cardinal numbers into words.
  */
 var Cardinal = exports.Cardinal = function () {
-  /**constructor of cardinal
-   * @constructor
-   * @param {object|string} reference and input.
-   */
-  function Cardinal(array, input) {
-    _classCallCheck(this, Cardinal);
-
-    this.number = input;
-    this.ref = array;
-  }
-  /**function to convert cardinal number to word 
-   * @function 
-  */
-
-
-  _createClass(Cardinal, [{
-    key: "convert",
-    value: function convert() {
-      var obj = new num.NumberToWord();
-      var r = obj.number_to_word(this.number);
-      var ob = new rep.Replace(this.ref);
-      ob.replacer(this.number, r);
-    }
-    /**function output 
-     * @function
-     * @return string converted string.
+    /**constructor of cardinal
+     * @constructor
+     * @param {object|string} reference and input.
      */
+    function Cardinal(array, input) {
+        _classCallCheck(this, Cardinal);
 
-  }, {
-    key: "output",
-    value: function output() {
-      var obj = new num.NumberToWord();
-      var r = obj.number_to_word(this.number);
-      return r.trim();
+        this.number = input;
+        this.ref = array;
     }
-  }]);
+    /**function to convert cardinal number to word 
+     * @function 
+    */
 
-  return Cardinal;
+
+    _createClass(Cardinal, [{
+        key: "convert",
+        value: function convert() {
+            var obj = new num.NumberToWord();
+            var r = obj.number_to_word(this.number);
+            var ob = new rep.Replace(this.ref);
+            ob = ob.replace(/\s+/g, "");
+            ob.replacer(this.number, r);
+        }
+        /**function output 
+         * @function
+         * @return string converted string.
+         */
+
+    }, {
+        key: "output",
+        value: function output() {
+            var obj = new num.NumberToWord();
+            var r = obj.number_to_word(this.number);
+            return r.trim();
+        }
+    }]);
+
+    return Cardinal;
 }();
 
 /***/ }),
@@ -516,7 +521,7 @@ var SpecialMiddle = exports.SpecialMiddle = function () {
             } else if (this.middle.match(/\d+[.]\d+|\d+[/]\d+/g)) {
                 var obj2 = new dec.DecimalFraction(this.ref, this.middle);
                 obj2.convert();
-            } else if (this.middle.match(/[+]\d{12}|[0]\d{12}/g)) {
+            } else if (this.middle.match(/[+]\d{12}|[0]\d{10}/g)) {
                 var obj3 = new phone.Phoneno(this.ref, this.middle);
                 obj3.convert();
             } else if (this.middle.match(/\d{1,4}[-]\d{1,2}[-]\d{1,4}|\d{1,4}[/]\d{1,2}[/]\d{1,4}/g)) {
@@ -762,13 +767,16 @@ var Phoneno = exports.Phoneno = function () {
         value: function convert() {
             var obj = new _numberword.NumberToWord();
             var out = "";
-            out = this.no.charAt(0);
+            if (this.no.charAt(0) === "0") {
+                out = "zero ";
+            } else {
+                out = this.no.charAt(0);
+            }
             for (var i = 1; i < this.no.length; i++) {
                 var lett = this.no.charAt(i);
                 out += obj.number_to_word(lett);
             }
             out = out.trim();
-            out = out.replace(/\s+/g, "");
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.no, out);
         }
@@ -846,6 +854,7 @@ var Date = exports.Date = function () {
                 b.push(obj.number_to_word(a[i]).trim());
             }
             b = b.join("-");
+            b = b.replace(/\s+/g, "");
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.date, b);
         }
@@ -1013,7 +1022,6 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
                     var str = _obj.number_to_word(a[k]);
                     s = s.replace(a[k], str);
                 }
-                s = s.replace(/\s+/g, "");
                 s = s.replace("onest", "first");
                 s = s.replace("twond", "second");
                 s = s.replace("threerd", "third");
@@ -1042,9 +1050,8 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
             var obj = new _numberword.NumberToWord();
             for (var k = 0; k < a.length; k++) {
                 var str = obj.number_to_word(a[k]);
-                s = s.replace(a[k], str);
+                s = s.replace(a[k], str) + " ";
             }
-            s = s.replace(/\s+/g, "");
             s = s.replace("onest", "first");
             s = s.replace("twond", "second");
             s = s.replace("threerd", "third");

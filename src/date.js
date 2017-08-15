@@ -28,6 +28,7 @@ export class Date {
             b.push(obj.number_to_word(a[i]).trim());
         }
         b = b.join("-");
+        b=b.replace(/\s+/g,"");
         let obj2 = new Replace(this.ref);
         obj2.replacer(this.date, b);
 

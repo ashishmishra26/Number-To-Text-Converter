@@ -28,6 +28,7 @@ export class NumberToWord {
         } else {
             string += this.one[oplace] + " ";
         }
+        string.trim();
         return string;
     }
     /**Thid is convert function 
@@ -58,13 +59,15 @@ export class NumberToWord {
         for (let i = 2; i < digit_array.length; i += 3, position++) {
             let unit = this.convert(digit_array[i], digit_array[i - 1], digit_array[i - 2]);
             if (unit.trim() !== "") {
-                text.push(unit + " " + this.beyond[position]);
+                text.push(unit+this.beyond[position]);
             }
         }
         let output = "";
         for (let k = text.length - 1; k >= 0; k--) {
             output += text[k] + " ";
         }
+        (output.trim());
         return output;
+
     }
 }

@@ -40,7 +40,6 @@ export class SuffixPrefix {
                 var str = obj.number_to_word(a[k]);
                 s = s.replace(a[k], str);
             }
-            s = s.replace(/\s+/g, "");
             s = s.replace("onest", "first");
             s = s.replace("twond", "second");
             s = s.replace("threerd", "third");
@@ -66,9 +65,8 @@ export class SuffixPrefix {
         let obj = new NumberToWord();
         for (let k = 0; k < a.length; k++) {
             var str = obj.number_to_word(a[k]);
-            s = s.replace(a[k], str);
+            s =s.replace(a[k],str)+" ";
         }
-        s = s.replace(/\s+/g,"");
         s = s.replace("onest", "first");
         s = s.replace("twond", "second");
         s = s.replace("threerd", "third");

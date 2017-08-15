@@ -21,6 +21,7 @@ export class Cardinal {
         let obj = new num.NumberToWord();
         var r = obj.number_to_word(this.number);
         let ob = new rep.Replace(this.ref);
+        ob=ob.replace(/\s+/g,"");
         ob.replacer(this.number, r);
     }
     /**function output 

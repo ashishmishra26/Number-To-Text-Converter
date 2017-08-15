@@ -18,6 +18,8 @@ export class Replace {
      */
     replacer(token, word) {
         this.ref.text = this.ref.text.replace(token, word);
+        this.ref.text=this.ref.text.replace(/  +/g," ");
+        
         this.ref.count++;
         if (this.ref.a.length === this.ref.count) {
             document.getElementById("result").innerHTML = this.ref.text;
