@@ -1028,6 +1028,7 @@ var SuffixPrefix = exports.SuffixPrefix = function () {
                 s = s.replace("fiveth", "fifth");
                 s = s.replace("nineth", "ninth");
                 s = s.trim();
+                s = s.replace(/  +/g, " ");
                 var obj2 = new _replace.Replace(this.ref);
                 obj2.replacer(this.mix, s);
             }

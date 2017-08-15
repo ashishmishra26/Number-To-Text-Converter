@@ -46,6 +46,7 @@ export class SuffixPrefix {
             s = s.replace("fiveth", "fifth");
             s = s.replace("nineth", "ninth");
             s = s.trim();
+            s=s.replace(/  +/g," ");
             let obj2 = new Replace(this.ref);
             obj2.replacer(this.mix, s);
         }

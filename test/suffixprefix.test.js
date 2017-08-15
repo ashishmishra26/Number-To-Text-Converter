@@ -6,7 +6,7 @@ import {
 } from "../src/numberword.js";
 test("SF", () => {
     let obj = new SuffixPrefix(null, "3s");
-    expect(obj.output()).toBe("threes");
+    expect(obj.output()).toBe("three   s");
 });
 /*test("SF", () => {
     let obj = new SuffixPrefix(null, "4th");
