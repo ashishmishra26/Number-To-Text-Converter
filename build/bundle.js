@@ -1124,11 +1124,11 @@ var Ordinal = exports.Ordinal = function () {
                 s = s.replace(a[k], str);
             }
             s = s.replace(/\s+/g, "");
-            s = s.replace("one st", "first");
-            s = s.replace("two nd", "second");
-            s = s.replace("three rd", "third");
-            s = s.replace("five th", "fifth");
-            s = s.replace("nine th", "ninth");
+            s = s.replace("onest", "first");
+            s = s.replace("twond", "second");
+            s = s.replace("threerd", "third");
+            s = s.replace("fiveth", "fifth");
+            s = s.replace("nineth", "ninth");
             s = s.trim();
             var obj2 = new _replace.Replace(this.ref);
             obj2.replacer(this.number, s);
@@ -1153,13 +1153,11 @@ var Ordinal = exports.Ordinal = function () {
                 var str = obj.number_to_word(a[k]);
                 s = s.replace(a[k], str);
             }
-            s = s.replace(/\s+/g, "");
-            s = s.replace("one st", "first");
-            s = s.replace("two nd", "second");
-            s = s.replace("three rd", "third");
-            s = s.replace("five th", "fifth");
-            s = s.replace("nine th", "ninth");
-            s = s.trim();
+            s = s.replace("one", "first");
+            s = s.replace("twond", "second");
+            s = s.replace("threerd", "third");
+            s = s.replace("fiveth", "fifth");
+            s = s.replace("nineth", "ninth");
             return s;
         }
     }]);

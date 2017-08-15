@@ -40,11 +40,11 @@ export class SuffixPrefix {
                 var str = obj.number_to_word(a[k]);
                 s = s.replace(a[k], str);
             }
-            s = s.replace("onest", "first");
-            s = s.replace("twond", "second");
-            s = s.replace("threerd", "third");
-            s = s.replace("fiveth", "fifth");
-            s = s.replace("nineth", "ninth");
+            s = s.replace("onest","first");
+            s = s.replace("twond","second");
+            s = s.replace("threerd","third");
+            s = s.replace("fiveth","fifth");
+            s = s.replace("nineth","ninth");
             s = s.trim();
             s=s.replace(/  +/g," ");
             let obj2 = new Replace(this.ref);
