@@ -669,19 +669,23 @@ var DecimalFraction = exports.DecimalFraction = function () {
             if (text.match(/\d+[.]\d+/g)) {
                 var arr = text.split(".");
                 b.push(obj.number_to_word(arr[0]));
-                b.push(".");
+                b.push(" ");
+                b.push(" point ");
+                b.push(" ");
                 b.push(obj.number_to_word(arr[1]));
                 b = b.join(" ");
-                b = b.replace(/\s+/g, "");
+
                 var obj2 = new _replace.Replace(this.ref);
                 obj2.replacer(this.df, b);
             } else if (text.match(/\d+[/]\d+/g)) {
                 var _arr = text.split("/");
                 b.push(obj.number_to_word(_arr[0]));
-                b.push("/");
+                b.push(" ");
+                b.push(" by ");
+                b.push(" ");
                 b.push(obj.number_to_word(_arr[1]));
                 b = b.join(" ");
-                b = b.replace(/\s+/g, "");
+
                 var _obj = new _replace.Replace(this.ref);
                 _obj.replacer(this.df, b);
             }
