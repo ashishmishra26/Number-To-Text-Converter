@@ -1153,7 +1153,8 @@ var Ordinal = exports.Ordinal = function () {
                 var str = obj.number_to_word(a[k]);
                 s = s.replace(a[k], str);
             }
-            s = s.replace("one", "first");
+            s = s.replace(/\s+/g, "");
+            s = s.replace("onest", "first");
             s = s.replace("twond", "second");
             s = s.replace("threerd", "third");
             s = s.replace("fiveth", "fifth");
